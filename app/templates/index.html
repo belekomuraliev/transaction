@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div>
+    <h2 class="mb-5 text-center">Список транзакции</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Сумма</th>
+          <th scope="col">Статус</th>
+          <th scope="col">Тип валюты</th>
+          <th scope="col">Коментарии</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+        <tr>
+          <th scope="row">{{ transaction.id }}</th>
+          <td>{{ transaction.value }}</td>
+          <td>{{ transaction.status }}</td>
+          <td>{{ transaction.unit }}</td>
+          <td>{{ transaction.comment }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <div>
+      <a href="{{ url_for('create') }}" class="btn btn-warning">Новая транзакция</a>
+    </div>
+{% endblock %}
